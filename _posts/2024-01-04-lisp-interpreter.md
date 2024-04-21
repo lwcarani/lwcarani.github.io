@@ -107,10 +107,10 @@ import operator as op
 import math
 
 class SymbolTable(dict):
-"""
-A mapping of {variable name: value}
-"""
-    def __init__(self, params=[], args=[], outer_scope=None):
+    """
+    A mapping of {variable name: value}
+    """
+    def __init__(self, params, args, outer_scope=None):
         self.update(zip(params, args))
         self.outer_scope = outer_scope
 
