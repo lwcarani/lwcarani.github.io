@@ -45,7 +45,7 @@ graph TD
 ```
 
 
-### Lexing
+## Lexing
 
 Lexer generators are built on the theory of deterministic finite automata. These automata accept *regular languages*, which can be described with *regular expressions* [(Cooper & Torczon, ch. 2)](https://dl.acm.org/doi/pdf/10.5555/2737838]). During lexing, the compiler transforms the original source code from a sequence of characters to a sequence of tokens, which is then fed into the next phase of compilation, the parser. Typically we define a token as a <token class, lexeme> pair, like so:
 ```
@@ -62,7 +62,7 @@ The source code for a lexer is essentially a big `switch` statement, but instead
 > As briefly noted above, common software tools for this process include [Lex](https://en.wikipedia.org/wiki/Lex_(software)) or [Flex](https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)) or [ocamllex](https://v2.ocaml.org/manual/lexyacc.html).
 {: .prompt-info }
 
-### Parsing
+## Parsing
 
 Parser generators are also built on the theory of automata, but they use *pushdown automata* which are like the finite automata used for lexers, but they also maintain a stack on which they can push and pop symbols. This stack allows pushdown automata to accept a bigger class of languages, which are known as *context-free languages* (CFLs). Just as regular languages can be expressed with a special notation (regular expressions), CFLs can be described with *context-free grammars* (CFGs). A context-free grammar is a set of *production rules* that describe how one symbol can be replaced by other symbols [(Clarkson, ch. 9.2.2)](https://cs3110.github.io/textbook/chapters/interp/parsing.html).
 
@@ -93,11 +93,11 @@ Therefore, an AST allows us to represent the structure of a program at a level t
 > Common parser generator tools include [Yacc](https://en.wikipedia.org/wiki/Yacc), [Bison](https://www.gnu.org/software/bison/), [Lark](https://lark-parser.readthedocs.io/en/stable/) (for Python), and [Menhir](https://gallium.inria.fr/~fpottier/menhir/) (for OCaml).
 {: .prompt-info }
 
-### Semantic Analysis (including Type Checking)
+## Semantic Analysis (including Type Checking)
 
 After lexing and parsing, the next phase of compilation is semantic analysis, and the primary task of semantic analysis is type checking. To be specific, a *type system* is a mathematic description of how to determine whether an expression is ill-typed or well-typed. A *type checker* is a program that implements a type system, i.e., implements the static semantics of the language [(Clarkson, ch. 9.5)](https://cs3110.github.io/textbook/chapters/interp/typecheck.html). 
 
-### Lowering to Intermediate Representation (IR)
+## Lowering to Intermediate Representation (IR)
 
 Michael Clarkson says it best in his book "OCaml Programming: Correct + Efficient + Beautiful", so I'll just quote him directly here for this section:
 
@@ -107,7 +107,7 @@ An IR language typically has abstract machine instructions that accomplish conce
 
 I'll add that another advantage of lowering the type-checked AST to IR is that we can leverage existing softwares like [MLIR](https://mlir.llvm.org/) or [LLVM](https://llvm.org/) to optimize and generate the target code for us. These existing softwares allow different compiler projects to focus on building a front end for their language, and use a shared optimizer and backend to generate machine code. Since LLVM is a massive open source project, you know you're getting a highly tuned optimizer for your compiler, allowing you to focus more of your efforts on designing the front end of the compiler. One of many nice overviews of LLVM and its use can be found [here](https://aosabook.org/en/v1/llvm.html).
 
-### Target Code Generation
+## Target Code Generation
 
 Finally, the last phase of compilation is generating target code from the IR. In this phase, we select concrete machine instructions to target, and which variables to store in memory (slow to access) vs. processor registers (fast to access but limited in number). As part of code generation, a compiler will always attempt some optimizations to maximize the performance of the code. Some examples include loop unrolling, eliminating dead code, replacing a function call with the function body itself, or re-ordering machine instructions [(Clarkson, ch. 9.0)](https://cs3110.github.io/textbook/chapters/interp/intro.html).
 
