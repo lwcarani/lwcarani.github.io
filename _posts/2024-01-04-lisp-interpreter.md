@@ -15,7 +15,7 @@ For some interesting historical context on Lisp, and some thoughts on why, perha
 
 `py-lisp-interpreter` is a basic Lisp interpreter, written in Python. Running `pylisp` from the command line will allow the user to enter the Lisp REPL environment, or execute a .txt file from a provided file path. 
 
-> Throughout this post, I will discuss how I implemented the lexing, parsing, and evaluation phases of my Lisp interpreter. For a helpful overview of the phases of an interpreter (and compiler), please see my previous post [here](www.google.com)
+> Throughout this post, I will discuss how I implemented the lexing, parsing, and evaluation phases of my Lisp interpreter. For a helpful overview of the phases of an interpreter (and compiler), please see my previous post [here](https://lwcarani.github.io/posts/compilers-and-interpreters/)
 {: .prompt-info }
 
 ## Type Definitions

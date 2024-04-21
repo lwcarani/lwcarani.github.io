@@ -113,7 +113,7 @@ Finally, the last phase of compilation is generating target code from the IR. In
 
 ## Final Thoughts
 
-I can't say enough about Michael Clarkson's [book](https://cs3110.github.io/textbook/cover.html), OCaml Programming: Correct + Efficient + Beautiful. It is wonderfully accessible and beautifully written. I learned so much about not just about OCaml, but about programming best practices and computer science fundamentals. His [chapter]() about interpreters in particular was fantastic. 
+I can't say enough about Michael Clarkson's [book](https://cs3110.github.io/textbook/cover.html), OCaml Programming: Correct + Efficient + Beautiful. It is wonderfully accessible and beautifully written. I learned so much about not just about OCaml, but about programming best practices and computer science fundamentals. His [chapter](https://cs3110.github.io/textbook/chapters/interp/intro.html) about interpreters in particular was fantastic. 
 
 Stanford's compiler [course](https://www.edx.org/learn/computer-science/stanford-university-compilers) on edx was also very useful in teaching me the fundamentals of compilers. I still have a lot to learn, and I'm looking forward to the journey.
 
