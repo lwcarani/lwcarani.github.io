@@ -10,7 +10,7 @@ In March of 2023, I partnered with my good friend [Jake Taylor](https://github.c
 1. Bring the ChatGPT "Large Language Model" (LLM) experience to iMessage (both in private and group chats)
 2. Allow users to generate photo-realistic images with generative AI via an iMessage Extension App
 
-In our infinite cleverness, we named this app ["aiMessages"](https://sites.google.com/view/aimessagesapp/home). We launched on the Apple App Store June 2023 and at the time of writing this post (May 2024) it is still available for [download](https://apps.apple.com/us/app/aimessages/id6446336518).
+In our infinite cleverness, we named this app ["aiMessages"](https://sites.google.com/view/aimessagesapp/home). We launched on the Apple App Store June 2023 and at the time of writing this post (May 2024) it is still available for [download](https://apps.apple.com/us/app/aimessages/id6446336518). 
 
 As I continue to learn and grow as a software developer / engineer, I try to consume information from a variety of sources: textbooks, online courses, podcasts, blogs, etc., but I've always found that the most effective form of learning for me is through actually building real software. This project was no exception. Most (if not all) parts of our final tech stack I had never used before this project. Building this app with Jake was deeply satisfying (and at times addicting), and through the process Irew as a software engineer. 
 
