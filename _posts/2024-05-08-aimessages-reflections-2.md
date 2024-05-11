@@ -244,7 +244,7 @@ const response =
 
 ### Async/Await
 
-Modern JavaScript/TypeScript added a clean way to handle function callbacks in an elegant way by adding a Promise-based API that has special syntax to allow us to treat asynchronous code as though it is synchronous. This new language feature does add a bit of complexity - making a function `async` means your values are wrapped in Promises. So what used to return a `string` now returns a `Promise<string>`. 
+Modern JavaScript/TypeScript added a way to handle function callbacks in an elegant way by adding a Promise-based API that has special syntax to allow us to treat asynchronous code as though it is synchronous. This new language feature does add a bit of complexity - making a function `async` means your values are wrapped in Promises. So what used to return a `string` now returns a `Promise<string>`. 
 
 ```ts
 const func = () => ":wave:";
@@ -256,11 +256,10 @@ const myPromiseString = asyncFunc();
 myString.length;
 
 // myPromiseString is a Promise, not the string:
-
 myPromiseString.length;  // throws error
 ```
 
-Using the `await` keyword allows us to easily convert a promise into its value. Note that `await` must be used within an `async` function:
+Using the `await` keyword allows us to easily convert a `promise` into its value. Note that `await` must be used within an `async` function:
 
 ```ts
 // You can use the await keyword to convert a promise
@@ -302,7 +301,6 @@ Pulling directly from the [TypeScript docs](https://www.typescriptlang.org/play/
 // Which can make the code sit closer to left edge, and
 // be read with a consistent rhythm.
 ```
-
 
 ### FormData
 
