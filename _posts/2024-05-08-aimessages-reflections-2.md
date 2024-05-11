@@ -8,7 +8,7 @@ tags: [typescript, iOS]
 
 ## Overview
 
-As I mentioned in my [first blog post](https://lwcarani.github.io/posts/aimessages-reflections-1/) of this series, all of our backend code had to be written in TypeScript, because all that was available was Cloud Functions (1st gen). In the 1st generation of cloud functions. the only integrated option was to deploy TypeScript code. With the release of 2nd gen, you can now use Python. I had never used TypeScript before, but I was excited to learn a new language! Writing this app and using TypeScript, I learned a lot new concepts (both TypeScript syntax and general software design principles), to include (but not limited to) `Buffers`, `FormData`, exponential backoff, `.env` (`dotenv`), `enums`, `interfaces`, custom error classes, logging instrumentation or server side logging, the `optional chaining operator`, `nullish coalescing` (as opposed to `nil coalescing`, which can be found in the `Swift` programming language), and HTTP event handling with `axios`.
+As I mentioned in my [first blog post](https://lwcarani.github.io/posts/aimessages-reflections-1/) of this series, all of our backend code had to be written in TypeScript, because all that was available was Cloud Functions (1st gen). In the 1st generation of cloud functions. the only integrated option was to deploy TypeScript code. With the release of 2nd gen, you can now use Python. I had never used TypeScript before, but I was excited to learn a new language! Writing this app and using TypeScript, I learned a lot new concepts (both TypeScript syntax and general software design principles), to include (but not limited to) `Buffers`, `FormData`, exponential backoff, `.env` (`dotenv`), `enums`, `interfaces`, custom error classes, logging instrumentation or server side logging, the `optional chaining operator`, `nullish coalescing` (as opposed to `nil coalescing`, which can be found in the `Swift` programming language), `async/await`, and HTTP event handling with `axios`.
 
 ## Code Example
 The following piece of code from the backend of our app actually illustrates all of these coding concepts. It is a function that passes a text `prompt` and image `sketch` from the client to the `Clipdrop` API, which then turns that doodle + prompt into a photo-realistic image, which is then returned to the client. 
@@ -240,6 +240,68 @@ const response =
 ```
 
 [Axios](https://axios-http.com/docs/intro) is a JavaScript library used to make HTTP requests from node.js (or XMLHttpRequests from the browser). It is similar to the `fetch` API, but offers a bit more functionality. `Fetch` is also built-in whereas `axios` is a stand-along third party package that needs to be installed. For this project, I used `axios` because it greatly simplified the process of sending asynchronous HTTP requests from node.js to other servers, and also made it very simple to handle the responses. 
+
+
+### Async/Await
+
+Modern JavaScript/TypeScript added a clean way to handle function callbacks in an elegant way by adding a Promise-based API that has special syntax to allow us to treat asynchronous code as though it is synchronous. This new language feature does add a bit of complexity - making a function `async` means your values are wrapped in Promises. So what used to return a `string` now returns a `Promise<string>`. 
+
+```ts
+const func = () => ":wave:";
+const asyncFunc = async () => ":wave:";
+
+const myString = func();
+const myPromiseString = asyncFunc();
+
+myString.length;
+
+// myPromiseString is a Promise, not the string:
+
+myPromiseString.length;  // throws error
+```
+
+Using the `await` keyword allows us to easily convert a promise into its value. Note that `await` must be used within an `async` function:
+
+```ts
+// You can use the await keyword to convert a promise
+// into its value. Today, these only work inside an async
+// function.
+
+const myWrapperFunction = async () => {
+  const myString = func();
+  const myResolvedPromiseString = await asyncFunc();
+
+  // Via the await keyword, now myResolvedPromiseString
+  // is a string
+  myString.length;
+  myResolvedPromiseString.length;
+```
+
+Pulling directly from the [TypeScript docs](https://www.typescriptlang.org/play/?#example/async-await), we see that the `async/await` pattern allows us to greatly simplify code and make it much more readable:
+
+```ts
+// Async/Await took code which looked like this:
+
+// getResponse(url, (response) => {
+//   getResponse(response.url, (secondResponse) => {
+//     const responseData = secondResponse.data
+//     getResponse(responseData.url, (thirdResponse) => {
+//       ...
+//     })
+//   })
+// })
+
+// And let it become linear like:
+
+// const response = await getResponse(url)
+// const secondResponse = await getResponse(response.url)
+// const responseData = secondResponse.data
+// const thirdResponse = await getResponse(responseData.url)
+// ...
+
+// Which can make the code sit closer to left edge, and
+// be read with a consistent rhythm.
+```
 
 
 ### FormData
@@ -644,3 +706,10 @@ default: {
 ```
 
 If you trace the functional call logic, you can see that we update the event status logging when the API call is initiated (or requested), when it is completed, or when it fails. By conducting structured logging in this manner, we can conduct analysis of our logs to see where bottlenecks might be occurring. Specifically, we used Google's BigQuery to analyze our logs, which was only possible due to the structured manner in which we placed our `console.log()` statements. In fact, in a different place in our backend logic, this server side logging was crucial in identifying a massive slowdown in performance due to sub-optimal code, allowing us to immediately identify the bad section of code, fix the issue, and eliminate the latency.
+
+
+## Final Thoughts
+
+I have a strong preference for TypeScript over vanilla JavaScript, as I found the type checker to be very helpful. Using TypeScript was my first foray into the `async/await` paradigm and HTTP event handling, and I found the experience to very enjoyable, and rewarding!
+
+Thanks for reading! In part 3 I plan to cover our use of the LoopMessage API for communicating with users via iMessage.
