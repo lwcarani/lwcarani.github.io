@@ -33,7 +33,7 @@ Exp = (Atom, List)      # Implement a Lisp expression as an Atom or List
 
 ## Lexer
 
-Typicall, depending on the syntax of a programming language, implementing a lexer can be quite complicated. In this case, however, thanks to Lisp's syntax, and the beauty of Python, all we need to tokenize the input for our simple Lisp interpreter is `str.split()`:
+Typically, depending on the syntax of a programming language, implementing a lexer can be quite complicated. In this case, however, thanks to Lisp's syntax, and the beauty of Python, all we need to tokenize the input for our simple Lisp interpreter is `str.split()`:
 
 ```python 
 def tokenize(input: str) -> List[str]:
