@@ -341,13 +341,14 @@ formData.append("samples", numSamples);
 formData.append("steps", NUM_TRAINING_STEPS);
 ```
 
-The [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects) object integrates seamlessly with `axios`. It allows you to compile a set of key/value pairs to send using the `axios` API (or `Fetch` or `XMLHttpRequest`), so it make it easy to call APIs with keyed data or send keyed data over POST requests.
+The [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects) object integrates seamlessly with `axios`. It allows you to compile a set of key/value pairs to send using the `axios` API (or `Fetch` or `XMLHttpRequest`), so it makes it easy to call APIs with keyed data or send keyed data via a POST request.
 
 ### Interfaces and Enums
 
 It's not immediately obvious from the code, but `LoggingObject` is actually an interface I defined in the `globals.ts` file of this project:
 
 ```ts
+// from globals.ts
 export interface LoggingObject {
   session_id: string;
   uid?: string | undefined;
@@ -363,6 +364,7 @@ export interface LoggingObject {
 An `interface` in TypeScript is similar to other languages, in that it is a syntactical contract that defines the expected structure of an object. By allowing us to describe objects in this manner, the type checker in TypeScript can catch more errors, give better warning messages, and allow us to write more efficient, readable code. A trailing `?` indicates an optional property, so in the code above we see that every property is optional, except for `session_id`. Further specifying the type, you'll see that the optional `event_type` property must be of type `LoggingEventType` (which is an `enum`), or `undefined`. `LoggingEventType` is also defined in the `globals.ts` file of my project:
 
 ```ts
+// from globals.ts
 export enum LoggingEventType {
   IMAGE_CREATE = "image_create",
   IMAGE_EDIT = "image_edit",
@@ -708,6 +710,6 @@ If you trace the functional call logic, you can see that we update the event sta
 
 ## Final Thoughts
 
-I have a strong preference for TypeScript over vanilla JavaScript, as I found the type checker to be very helpful. Using TypeScript was my first foray into the `async/await` paradigm and HTTP event handling, and I found the experience to very enjoyable, and rewarding!
+I have a strong preference for TypeScript over vanilla JavaScript, as I found the type checker to be very helpful. Using TypeScript with this project was my first foray into the `async/await` paradigm and HTTP event handling, and I found the experience to very enjoyable, and rewarding!
 
 Thanks for reading! In part 3 I plan to cover our use of the LoopMessage API for communicating with users via iMessage.
