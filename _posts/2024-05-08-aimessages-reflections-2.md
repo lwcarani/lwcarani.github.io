@@ -253,9 +253,10 @@ const asyncFunc = async () => ":wave:";
 const myString = func();
 const myPromiseString = asyncFunc();
 
-myString.length;
+// myString is a string
+myString.length;  // does NOT throw an error
 
-// myPromiseString is a Promise, not the string:
+// myPromiseString is a Promise, not the string
 myPromiseString.length;  // throws error
 ```
 
@@ -276,7 +277,7 @@ const myWrapperFunction = async () => {
   myResolvedPromiseString.length;
 ```
 
-Pulling directly from the [TypeScript docs](https://www.typescriptlang.org/play/?#example/async-await), we see that the `async/await` pattern allows us to greatly simplify code and make it much more readable:
+Pulling directly from the [TypeScript site](https://www.typescriptlang.org/play/?#example/async-await), we see that the `async/await` pattern allows us to greatly simplify code and make it much more readable:
 
 ```ts
 // Async/Await took code which looked like this:
@@ -380,8 +381,7 @@ export enum LoggingEventType {
 }
 ```
 
-Where `interfaces` specify a syntactc contract, `enums` allow you to define a set of named constants. This makes it easier to document the intent of your code to other developers, improves the modularity of the code, and improves readability. 
-
+Where `interfaces` specify a syntactic contract, `enums` allow you to define a set of named constants. This makes it easier to document the intent of your code to other developers, improves the modularity of the code, and improves readability. 
 
 ### Optional Chaining
 
@@ -421,7 +421,7 @@ console.log(qty); // 42 and not 0
 console.log(message); // "hi!" and not ""
 ```
 
-This could casuse unexpected consequences and behavior if in this case, you consider `0` and `""` valid values. `??` helps avoid this pitfall by only short-circuiting on `null` or `undefined`. 
+This could cause unexpected consequences and behavior if in this case, you consider `0` and `""` valid values. `??` helps avoid this pitfall by only short-circuiting on `null` or `undefined`. 
 
 ```ts
 const count = 0;
@@ -533,7 +533,7 @@ export class ClipdropError extends Error {
 
 The custom error class here allows us to differentiate between error types throughout our program and attach extra data to the errors being thrown, which in turn let's us provide more detailed error messages back to the client and to the console log output, increasing the effectiveness and efficiency of debugging. 
 
-Custom error classes can be even more complicated, like the one below, again, allowing us to capture more nuanced information about the nature of the error and share better error messages to the client and output better error messags to console log output on the server:
+Custom error classes can be even more complicated, like the one below, again, allowing us to capture more nuanced information about the nature of the error and share better error messages to the client and output better error messages to console log output on the server:
 
 ```ts
 type ErrorName =
@@ -647,7 +647,7 @@ OPENAI_CHAT_COMPLETION_MODEL="gpt-3.5-turbo-0613"
 
 ### Logging Instrumentation
 
-To track the status of the Clipdrop API call, I included structured `console.log()` statements throughout the function call. You can see them below scattered thoughout the `switch` statement:
+To track the status of the Clipdrop API call, I included structured `console.log()` statements throughout the function call. You can see them below scattered throughout the `switch` statement:
 
 ```ts
 switch (requestType) {
