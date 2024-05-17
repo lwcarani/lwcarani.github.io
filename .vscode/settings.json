@@ -5,6 +5,7 @@
         "CLIPDROP",
         "davinci",
         "hideconstructor",
+        "idempotency",
         "inpainting",
         "memberof",
         "multiplicatively",
