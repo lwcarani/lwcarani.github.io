@@ -3,7 +3,7 @@ title: Starting a blog
 author: luke
 date: 2023-10-15 12:00:00 +0500
 categories: [hello world]
-tags: [hello world]
+tags: [hello world, thoughts]
 ---
 
 I decided to start a blog (mostly on things related to software engineering and programming), if only because it helps me gather my thoughts, and improve my understanding of technical concepts. I've always felt that trying to explain or teach concepts to other people forces me to grapple with my own understanding of the subject, so here we go. Also [Jake Taylor](https://github.com/jakee417) and [Steve Yegge](https://sites.google.com/site/steveyegge2/you-should-write-blogs) told me to.

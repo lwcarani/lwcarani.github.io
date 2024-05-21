@@ -1318,6 +1318,7 @@ if (isBotNamePresent) {
   ...
 
   // rest of code...
+}
 ```
 
 Also important to note, if you're in a group chat, you can't mention the name of someone else's chat bot, the user has to mention the specific name of the *user's* bot in the group chat for aiMessages to generate a response.
