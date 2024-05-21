@@ -3,7 +3,7 @@ title: Building the aiMessages iOS App - pt. 1 (Overview)
 author: luke
 date: 2024-05-01 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
-tags: [typescript, iOS]
+tags: [programming, typescript, iOS]
 ---
 
 In March of 2023, I partnered with my good friend [Jake Taylor](https://github.com/jakee417/) to build an iOS App that did two things:

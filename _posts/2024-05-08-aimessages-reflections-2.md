@@ -3,7 +3,7 @@ title: Building the aiMessages iOS App - pt. 2 (Typescript)
 author: luke
 date: 2024-05-08 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
-tags: [typescript, iOS]
+tags: [programming, typescript, iOS]
 ---
 
 ## Overview
@@ -14,6 +14,8 @@ As I mentioned in my [first blog post](https://lwcarani.github.io/posts/aimessag
 The following piece of code from the backend of our app actually illustrates all of these coding concepts. It is a function that passes a text `prompt` and image `sketch` from the client to the `Clipdrop` API, which then turns that doodle + prompt into a photo-realistic image, which is then returned to the client. 
 
 ```ts
+// clipdropApiManager.ts
+
 // // standard imports
 // Package for handling Webhooks / POST and other https requests
 import axios from "axios";
@@ -329,6 +331,7 @@ try {
 And here's another example of using `FormData` from the StabilityAI API call of our backend code:
 
 ```ts
+// stabilityApiManager.ts
 const imageBuffer = Buffer.from(image, "base64");
 const formData = new FormData();
 formData.append("init_image", imageBuffer);
@@ -348,7 +351,7 @@ The [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_A
 It's not immediately obvious from the code, but `LoggingObject` is actually an interface I defined in the `globals.ts` file of this project:
 
 ```ts
-// from globals.ts
+// globals.ts
 export interface LoggingObject {
   session_id: string;
   uid?: string | undefined;
@@ -364,7 +367,7 @@ export interface LoggingObject {
 An `interface` in TypeScript is similar to other languages, in that it is a syntactical contract that defines the expected structure of an object. By allowing us to describe objects in this manner, the type checker in TypeScript can catch more errors, give better warning messages, and allow us to write more efficient, readable code. A trailing `?` indicates an optional property, so in the code above we see that every property is optional, except for `session_id`. Further specifying the type, you'll see that the optional `event_type` property must be of type `LoggingEventType` (which is an `enum`), or `undefined`. `LoggingEventType` is also defined in the `globals.ts` file of my project:
 
 ```ts
-// from globals.ts
+// globals.ts
 export enum LoggingEventType {
   IMAGE_CREATE = "image_create",
   IMAGE_EDIT = "image_edit",
@@ -500,6 +503,8 @@ throw new ClipdropError({
 And the full `error class` is here:
 
 ```ts
+// clipdropErrors.ts
+
 type ErrorName =
   | "CLIPDROP_ERROR";
 
@@ -538,6 +543,8 @@ The custom error class here allows us to differentiate between error types throu
 Custom error classes can be even more complicated, like the one below, again, allowing us to capture more nuanced information about the nature of the error and share better error messages to the client and output better error messages to console log output on the server:
 
 ```ts
+// openaiErrors.ts
+
 type ErrorName =
   | "OPENAI_API_ERROR"
   | "OPENAI_API_ERROR_CODE_401"
@@ -628,6 +635,7 @@ this.clipdropApiHost = process.env.CLIPDROP_API_HOST ?? undefined;
 Specifying a `.env` file is simple. For the aiMessages project, it looks like this:
 
 ```sh
+# .env
 LOOP_SENDER_NAME="aimessages@imsg.chat"
 LOOP_API_HOST="https://server.loopmessage.com/api/v1/message/send/"
 LOOP_API_AUTH_HOST="https://iauth.loopmessage.com/auth/api/v1/init/"
@@ -652,6 +660,8 @@ OPENAI_CHAT_COMPLETION_MODEL="gpt-3.5-turbo-0613"
 To track the status of the Clipdrop API call, I included structured `console.log()` statements throughout the function call. You can see them below scattered throughout the `switch` statement:
 
 ```ts
+// clipdropApiManager.ts
+
 switch (requestType) {
 case ImageRequestType.DOODLE: {
   const toLog: LoggingObject = {

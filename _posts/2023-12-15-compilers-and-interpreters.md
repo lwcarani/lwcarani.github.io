@@ -3,7 +3,7 @@ title: Compilers & Interpreters
 author: luke
 date: 2023-12-15 12:00:00 +0500
 categories: [Software Engineering, Compilers]
-tags: [coding projects, compilers, interpreters]
+tags: [programming, coding projects, compilers, interpreters]
 mermaid: true
 ---
 

@@ -3,7 +3,7 @@ title: Building the aiMessages iOS App - pt. 3 (LoopMessage)
 author: luke
 date: 2024-05-15 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
-tags: [typescript, iOS, LoopMessage]
+tags: [programming, typescript, iOS, LoopMessage]
 mermaid: true
 ---
 
@@ -46,6 +46,7 @@ graph TD
 The workhorse of our backend was a deployed function named `loopMessageWebhookHandler` that processed every single incoming webhook from Loop. We implemented a Pub/Sub service to efficiently respond to incoming webhooks (more on this in a later post), and then used a `switch` statement to quickly determine what type of webhook event was received, and how to respond (`message_inbound`, `message_sent`, `conversation_inited`, etc.). 
 
 ```ts
+// index.ts
 exports.loopMessageWebhookHandler = functions
   .runWith({
     secrets: [
@@ -316,6 +317,7 @@ One of the really nice features of Loop's API was that we received a webhook eve
 Message:
 
 ```ts
+// globals.ts
 export const WELCOME_NEW_PRIVATE_USER: string =
   "Hello!!! 🥳🥳🥳 \n\n" +
   "I will only respond with text after you message me, and make sure " +
@@ -330,6 +332,8 @@ export const WELCOME_NEW_PRIVATE_USER: string =
 
 Function for sending welcome message:
 ```ts
+// handlers.ts
+
 /**
  * if alertType === "conversation_inited", send a welcome message
  * after sending welcome message, exit control flow
@@ -381,6 +385,7 @@ We also received a webhook every time a new group was created. Since anyone coul
 Message:
 
 ```ts
+// globals.ts
 export const WELCOME_MESSAGE_NEW_GROUP: string =
   "Hello!!! I see a new group was created 😏\n\n" +
   "I will only respond if mentioned by name " +
@@ -393,6 +398,8 @@ export const WELCOME_MESSAGE_NEW_GROUP: string =
 Function for sending welcome message:
 
 ```ts
+// handlers.ts
+
 /**
  * if alertType === "group_created", send a welcome message
  * with a deeplink to appstore for aiMessages app download
@@ -446,6 +453,8 @@ export async function groupCreatedWebhookHandler(
 Once we received confirmation that the message was *sent* to the user, we could do things like charge them for the transaction. One of the properties that Loop includes in the `message_sent` webhook is a field `success` that is `true` if the message was successfully delivered to the user, and `false` otherwise. If `success` was `true`, then we would create a receipt and store it in our NoSQL database. The `message_sent` webhook includes the contact info for the user, but that's not enough to appropriately identify who the user is to charge them for the transaction. To overcome this, we included passthrough data in our POST requests that we sent to Loop, so that when we received the `message_sent` webhook confirming delivery, we could parse the passthrough data and identify the `uid` and other pertinent information of the user.
 
 ```ts
+// handlers.ts
+
 /**
  *
  * @param {any} requestBodyData
@@ -555,6 +564,7 @@ After calling either `createReceiptForSuccessfulPrivateMessageDelivery` or `crea
 To ensure idempotency, these functions would check the current docID against the last receipt that was generated to ensure we were not double charging users, and then decremented the number of message credits the user has remaining, and then updated the NoSQL database to reflect the new amount. 
 
 ```ts
+// index.ts
 exports.chargeUserForPrivateMessageUse = functions
   .firestore
   .document("/customerExpenses/{uid}/private/{documentID}")
@@ -655,6 +665,8 @@ exports.chargeUserForGroupMessageUse = functions
 In the event that a message failed to deliver to the user, or timed out after too many attempts (effectively the same thing), we would simply log the event for later analysis.
 
 ```ts
+// handlers.ts
+
 /**
  *
  * @param {any} requestBodyData
@@ -690,6 +702,7 @@ To this end, in the frontend iOS portion of the app, we allowed users to specify
 Finally, we also cached `N` previous messages from the user's conversation, to provide context to the LLM when generating new responses. `N` is set in `globals.ts`, and typically between `5` and `10`.
 
 ```ts
+// globals.ts
 export const MAX_MESSAGE_HISTORY: number = process.env.NODE_ENV === "test" ? 5 : 10;
 ```
 
@@ -702,6 +715,8 @@ To illustrate this point, let's say you sent a text from your phone to aiMessage
 Here's the entire `privateMessageHandler` function:
 
 ```ts
+// handlers.ts
+
 /**
  *
  * @param {any} requestBodyData
@@ -928,6 +943,8 @@ export async function privateMessageHandler(
 Going through step by step, you can see that first we grab the `botName` that the user specified for their account: 
 
 ```ts
+// handlers.ts
+
 // get the user-specified stored botName from Firebase Firestore
 let botName: string;
 try {
@@ -948,6 +965,8 @@ try {
 We then append the `botName` to the `personality` of the LLM, also specifed by the user:
 
 ```ts
+// handlers.ts
+
 // get the user-specified stored personality from Firebase Firestore
 let personality: string;
 try {
@@ -971,6 +990,8 @@ personality += ` Your name is ${botName}.`;
 Finally, we download the cached message history from this particular user (identified by using the `uid`), and then add this to the message we send to the OpenAI API. The trick here is making sure that the cached message history we're sending to the OpenAI API is alternating correctly between the user's previous questions and OpenAI's previous responses, and that they are correctly labeled. 
 
 ```ts
+// handlers.ts
+
 // create the ChatCompletionRequestMessage array to send to OpenAIApi
 // Retrieve array of recent messages sent by user
 // and recent messages responses sent by assistant (i.e., ChatGPT)
@@ -1030,6 +1051,8 @@ Whenever we received a private message from the user, we would always respond, h
 3. Actually mentioned the **name** of their bot in the text message. Sometimes people fire off several texts in a group without actually asking any meaningful questions - we didn't want to generate an LLM response every single time, only when the user specifically wanted the bot's input with something like "hey aiMessages..."
 
 ```ts
+// handlers.ts
+
 /**
  *
  * @param {any} requestBodyData
@@ -1287,6 +1310,8 @@ export async function groupMessageHandler(
 Most of the code in `groupMessageHandler` is identical to `privateMessageHandler`, so I won't rehash it. The one important distinction is that we only called the OpenAI API if the `botName` of the user was mentioned in their text:
 
 ```ts
+// handlers.ts
+
 if (isBotNamePresent) {
   // if botName is present in the text, send POST request to OpenAI
 

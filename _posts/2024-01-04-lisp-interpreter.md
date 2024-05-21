@@ -3,7 +3,7 @@ title: Writing a Lisp Interpreter in Python
 author: luke
 date: 2024-01-04 12:00:00 +0500
 categories: [Software Engineering, Coding Projects]
-tags: [coding projects, interpreters, python]
+tags: [programming, coding projects, interpreters, python]
 ---
 
 In this blog post, I'm going to cover another [John Crickett](https://github.com/JohnCrickett) [coding challenge](https://codingchallenges.substack.com/p/coding-challenge-30-lisp-interpreter) that I just completed - building a Lisp interpreter in Python. Lisp is the [second oldest](https://en.wikipedia.org/wiki/Lisp_(programming_language)) high-level language implemented (in 1959, after FORTRAN in 1957), probably most well-known for its fully parenthesized prefix notation (that definitely takes some getting used to). Scott Wlaschin calls Lisp a "galaxy brain" language for introducing the symbolic programming paradigm (if you haven't watched his talk linked [here](https://www.youtube.com/watch?v=0fpDlAEQio4) I highly recommend it). This coding challenge has definitely been the most challenging to date - I had to spend a few hours just familiarizing myself with Lisp syntax so that I could understand it enough to cobble together an implementation with basic features. 
