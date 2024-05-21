@@ -1064,7 +1064,7 @@ As I've mentioned several times already, OpenAI also supports an official Node.j
 
 Finally, the API documentation was fantastic - very comprehensive, easy to read, understand, and follow. This is what you would expect from a massive company / product like OpenAI ChatGPT, but it's still worth noting.
 
-Thanks for reading! In part 5 I plan to cover StabilityAI's API and Clipdrop's API in more detail. 
+Thanks for reading! In part 5 I plan to cover Stability AI's API and Clipdrop's API in more detail. 
 
 
 
