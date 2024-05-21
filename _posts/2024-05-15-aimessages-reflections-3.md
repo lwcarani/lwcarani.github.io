@@ -34,7 +34,7 @@ graph TD
     C --> D[Authenticate, process, call OpenAI API]
     D --Response--> E[aiMessages Server]
     E --POST with response \n for client --> F[Loop Server]
-    F -- callback confirming \n delivering --> E
+    F -- callback confirming \n delivery --> E
     F --Response --> A
 ```
 
