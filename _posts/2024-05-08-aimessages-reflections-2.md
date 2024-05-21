@@ -328,7 +328,7 @@ try {
 }
 ```
 
-And here's another example of using `FormData` from the StabilityAI API call of our backend code:
+And here's another example of using `FormData` from the Stability AI API call of our backend code:
 
 ```ts
 // stabilityApiManager.ts
