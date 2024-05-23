@@ -5,7 +5,7 @@ date: 2024-05-22 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
 tags: [programming, typescript, iOS, Stability AI, Clipdrop]
 image:
-  path: /assets/img/aimessages/aiMessagesIcon.png
+  path: /assets/img/aiMessagesIcon.png
   alt: aiMessages
 ---
 
@@ -707,7 +707,7 @@ The text to image API was the most popular functionality in the app. In it, user
 
 Below you can see an example of the functionality in action. The user generated an image with the prompt "A cool sun wearing blue sunglasses," and the resultant image is shown below. This image can then easily be shared with friends directly through iMessage, or by converting into a sticker.
 
-![alt](/assets/img/aimessages/exampleExtension.png){: w="300" h="600" .normal .shadow}
+![alt](/assets/img/exampleExtension.png){: w="300" h="600" .normal .shadow}
 
 And here's the full `generateResponseWithStabilityAiTextToImageApi` function we used to call the API and convert a user's `prompt` into a new `image`:
 
@@ -898,7 +898,7 @@ Below you can see an example of the functionality in action. The image on the le
 
 Initial Image | After Applying Mask
 - | -
-![alt](/assets/img/aimessages/image_mask_before.png){: .shadow } | ![alt](/assets/img/aimessages/image_mask_after.png){: .shadow }
+![alt](/assets/img/image_mask_before.png){: .shadow } | ![alt](/assets/img/image_mask_after.png){: .shadow }
 
 And here's the full `generateResponseWithStabilityAiImageToImageWithMaskApi` function we used to call the API and convert a user's `image` and `prompt` into a new `image`:
 
@@ -997,7 +997,7 @@ Below you can see some examples of the functionality in action. First, a doodle 
 
 Skyline Doodle | Resultant Image | Forest Doodle | Resultant Image
 - | - | - | -
-![alt](/assets/img/aimessages/skyline_before.png){: .shadow } | ![alt](/assets/img/aimessages/skyline_after.png){: .shadow } | ![alt](/assets/img/aimessages/forest_before.png){: .shadow } | ![alt](/assets/img/aimessages/forest_after.png){: .shadow }
+![alt](/assets/img/skyline_before.png){: .shadow } | ![alt](/assets/img/skyline_after.png){: .shadow } | ![alt](/assets/img/forest_before.png){: .shadow } | ![alt](/assets/img/forest_after.png){: .shadow }
 
 And here's the full `generateResponseWithClipdropSketchToImageApi` function we used to call the API and convert a user's `sketch` + `prompt` into a new `image`:
 

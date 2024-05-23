@@ -5,7 +5,7 @@ date: 2024-05-20 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
 tags: [programming, typescript, iOS, OpenAI]
 image:
-  path: /assets/img/aimessages/aiMessagesIcon.png
+  path: /assets/img/aiMessagesIcon.png
   alt: aiMessages
 ---
 
