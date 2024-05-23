@@ -746,7 +746,7 @@ export async function privateMessageHandler(
   loopApiManager: LoopApiManager,
   openaiApiManager: OpenaiApiManager
 ): Promise<void> {
-  // Initalize the data manager
+  // Initialize the data manager
   const dataManager = new DataManager();
 
   // Grab parameters from Loop Webhook
@@ -1082,7 +1082,7 @@ export async function groupMessageHandler(
   loopApiManager: LoopApiManager,
   openaiApiManager: OpenaiApiManager
 ): Promise<void> {
-  // Initalize the data manager
+  // Initialize the data manager
   const dataManager = new DataManager();
 
   // Grab parameters from Loop Webhook
@@ -1337,6 +1337,6 @@ Also important to note, if you're in a group chat, you can't mention the name of
 
 I learned lots of great software engineering / system design lessons through this portion of the app. I was able to really dive into Loop's API docs and overall, found them to be pretty comprehensive. Whenever there were gaps in the API docs, Loop's customer service was very responsive and willing to help, and help troubleshoot issues.
 
-The sandbox environment Loop provided was great to use too! If I had to nitpick, it was annoying to only be able to test private message webhooks in the sandbox and not group messages, but we managed. My only other nitpick complaint is that you have to buy your message credits in bulk ahead of time, vice a pay-as-you-go setup. I beleve they offer pay-as-you-go for larger clients, but we didn't meet the threshold. Message credits also had an expiration (which was annoying), but Loop was happy to extend the expiration several times so we didn't lose the credits we purchased. 
+The sandbox environment Loop provided was great to use too! If I had to nitpick, it was annoying to only be able to test private message webhooks in the sandbox and not group messages, but we managed. My only other nitpick complaint is that you have to buy your message credits in bulk ahead of time, vice a pay-as-you-go setup. I believe they offer pay-as-you-go for larger clients, but we didn't meet the threshold. Message credits also had an expiration (which was annoying), but Loop was happy to extend the expiration several times so we didn't lose the credits we purchased. 
 
 Thanks for reading! In part 4 I plan to cover OpenAI's API in more detail. 
