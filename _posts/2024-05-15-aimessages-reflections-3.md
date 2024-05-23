@@ -34,11 +34,11 @@ The system worked as follows.
 graph TD
     A[User] -- Sends message to aiMessages \n dedicated sender name --> B[Generates webhook]
     B -- POST --> C[aiMessages Server]
-    C --> D[Authenticate, process, call OpenAI API]
-    D --Response--> E[aiMessages Server]
-    E --POST with response \n for client --> F[Loop Server]
-    F -- callback confirming \n delivery --> E
-    F --Response --> A
+    C --Step 1: Authenticate,\nprocess, call OpenAI API --> D[OpenAI Server]
+    D --response--> C
+    C --Step 2: POST with\nresponse for client --> F[Loop Server]
+    F -- callback confirming \n delivery --> C
+    F --response --> A
 ```
 
 > A webhook is an HTTP-based callback function that allows for event-driven communication between 2 APIs. At it's simplest, it's just a packet of information sent after some event, delivered in JSON format that contains keyed information that can easily be parsed and handled. For Loop, a webhook is generated and pushed to the designated server URL every time a certain event occurs. For iMessage, this included `message_inbound`, `message_sent`, `message_failed`, `message_scheduled`, `message_reaction`, `message_timeout`, and `group_created`, among others. This allowed us to deploy a series of functions and procedures that would execute whenever we received a particular webhook - like decrementing the number of credits a user has by 1 once we receive confirmation that our message sent from the backend was actually received by the client. 
