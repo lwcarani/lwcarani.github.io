@@ -5,6 +5,9 @@ date: 2024-05-15 12:00:00 +0500
 categories: [Software Engineering, aiMessages]
 tags: [programming, typescript, iOS, LoopMessage]
 mermaid: true
+image:
+  path: /assets/img/aimessages/aiMessagesIcon.png
+  alt: aiMessages
 ---
 
 ## Overview
@@ -698,6 +701,13 @@ export async function messageFailedOrTimeoutWebhookHandler(
 This portion of our backend codebase contained the most nuanced and complicated logic. When the aiMessages server received a `message_inbound` webhook from Loop, it meant that a user just sent us a new message. In this case, our priority was to minimize the latency in responding to the user, while also returning a useful, interesting, and entertaining result.
 
 To this end, in the frontend iOS portion of the app, we allowed users to specify a name for their bot, as well as a personality, as a way to personalize the experience. This information was stored in our NoSQL database through Firebase, and we could quickly query this info when needed. The personality provided a small way to personalize the experience - if the user specified that their bot was a "cowboy," then the LLM might say "Yeehaw!..." to start every message. 
+
+Below you can see two examples of the user selecting a personality for their chatbot. In the first example, the user selected "hamster" as the personality for their chatbot. In the second, they selected "Grinning," which you can see along with the personality description. 
+
+![alt](assets/img/aimessages/personality_example_2.png){: .shadow } | ![alt](assets/img/aimessages/personality_example_1.png){: .shadow } 
+
+> Every emoji actually represented a different personality. So, to select a new personality for their bot, users just selected an emoji, and every emoji had a unique, pre-generated personality description associated with it. We actually used ChatGPT to generate all of the personalities associated with each emoji!
+{: .prompt-info }
 
 Finally, we also cached `N` previous messages from the user's conversation, to provide context to the LLM when generating new responses. `N` is set in `globals.ts`, and typically between `5` and `10`.
 
