@@ -704,7 +704,7 @@ To this end, in the frontend iOS portion of the app, we allowed users to specify
 
 Below you can see two examples of the user selecting a personality for their chatbot. In the first example, the user selected "hamster" as the personality for their chatbot. In the second, they selected "Grinning," which you can see along with the personality description. 
 
-![alt](/assets/img/aimessages/personality_example_2.png){: .shadow } | ![alt](/assets/img/aimessages/personality_example_1.png){: .shadow } 
+![alt](/assets/img/aimessages/personality_example_2.png){: .shadow } | ![alt](/assets/img/aimessages/personality_example_1.png){: .shadow }  
 
 > Every emoji actually represented a different personality. So, to select a new personality for their bot, users just selected an emoji, and every emoji had a unique, pre-generated personality description associated with it. We actually used ChatGPT to generate all of the personalities associated with each emoji!
 {: .prompt-info }

@@ -898,7 +898,7 @@ Below you can see an example of the functionality in action. The image on the le
 
 Initial Image | After Applying Mask
 - | -
-![alt](/assets/img/aimessages/image_mask_before.png){: .shadow } | ![alt](/assets/img/aimessages/image_mask_after.jpeg){: .shadow }
+![alt](/assets/img/aimessages/image_mask_before.png){: .shadow } | ![alt](/assets/img/aimessages/image_mask_after.png){: .shadow }
 
 And here's the full `generateResponseWithStabilityAiImageToImageWithMaskApi` function we used to call the API and convert a user's `image` and `prompt` into a new `image`:
 
