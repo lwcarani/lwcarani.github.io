@@ -19,7 +19,7 @@ For item 1, we chose to use OpenAI's ChatGPT. Now, there are many great alternat
 
 ## API
 
-In the examples below, I'll walk through our implementation of each of the different API calls that we used from OpenAI. 
+In the examples below, I'll walk through our implementation of each of the different API calls that we used from OpenAI.
 
 > Please note that this code was implemented March/April 2023, so it's highly likely that the APIs have been updated. Please check the source docs [here](https://platform.openai.com/docs/api-reference/introduction) for the most up-to-date references. 
 {: .prompt-warning }
