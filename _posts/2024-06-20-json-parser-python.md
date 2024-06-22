@@ -1,7 +1,7 @@
 ---
 title: Implementing a JSON Parser - Python
 author: luke
-date: 2024-06-21 12:00:00 +0500
+date: 2024-06-20 12:00:00 +0500
 categories: [Software Engineering, Parsers, Compilers, Coding Projects]
 tags: [programming, python, json, coding projects]
 ---
