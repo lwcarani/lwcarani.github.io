@@ -113,8 +113,6 @@ name:
   ;
 ```
 
-The first rule, named `prog` has two productions. It says that `prog` is a valid `value`, or an `EOF` token. If `EOF`, we return `None` `option`. `v=value` says to match a `value` and bind the resulting value to `v`. The action simply says to return that value `v` wrapped in an `option`. 
-
 The first rule, named `prog` (short for "program") has two production rules:
 
 - `EOF { None }`
