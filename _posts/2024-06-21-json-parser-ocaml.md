@@ -41,7 +41,7 @@ Grammar definitions have four parts: header, declaration, rules, and trailer.
 
 ### Header
 
-The header appears between `%{` and `%}`. It is code that is literally copied into the generated `parser.ml` file. As an example, I've used it to open the `Json` module to show what it looks like, but since I don't need the `Json` module for this code, I've commented it out. 
+The header appears between `%{` and `%}`. It is code that is copied directly into the generated `parser.ml` file. As an example, I could use the header section to open the `Json` module, making it available in `parser.ml`. This is just to show an example of what it would look like - since I don't actually need the `Json` module for this code, I've commented it out. 
 
 ```ocaml
 (* Parser source code *)
