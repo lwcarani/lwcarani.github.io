@@ -98,7 +98,10 @@ let safe_hd lst =
 assert ("1" = extract (safe_hd [1;2;3;]));;
 ```
 
-> A couple of fun notes here - Rust options (among other language features) were influenced from the ML family of languages (like OCaml), and in fact, the first Rust compiler was actually written in OCaml.
+> A bit of history on `null`: Tony Hoare introduced `null` references in ALGOL W back in 1965 "simply because it was so easy to implement". In [this talk](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/) he discusses how he believes it was a "billion-dollar mistake".
+{: .prompt-info }
+
+> Rust options (among other language features) were influenced from the ML family of languages (like OCaml), and in fact, the first Rust compiler was actually written in OCaml!
 {: .prompt-info }
 
 ## 6. Immutability by default

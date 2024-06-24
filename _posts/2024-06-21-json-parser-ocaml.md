@@ -301,7 +301,7 @@ The `read_string` rule is a separate lexer rule that handles the contents of str
     - This two-stage approach allows for efficient and correct handling of string literals, including proper processing of escape sequences and error detection.
 
 > It's important that the string regular expression occur near the end. Otherwise, keywords like `true`, `false`, and `null`, would be lexed as strings rather than `TRUE`, `FALSE`, and `NULL` tokens.
-{: .prompt-info }
+{: .prompt-tip }
 
 ## Testing
 
