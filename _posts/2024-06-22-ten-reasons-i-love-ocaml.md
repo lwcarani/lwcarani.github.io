@@ -4,9 +4,6 @@ author: luke
 date: 2024-06-22 12:00:00 +0500
 categories: [Programming]
 tags: [programming, ocaml]
-image:
-  path: /assets/img/ocaml.png
-  alt: OCaml
 ---
 
 I think compilers are pretty cool. So cool in fact, that when I separate from the military next year, I'm really hoping to become a compiler engineer. And if not that, at least a software engineer that works adjacent to the compiler engineering space. To that end, I decided to learn OCaml since it's a popular choice when writing compilers, and because I wanted to learn a functional programming language. 
