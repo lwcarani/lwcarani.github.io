@@ -318,7 +318,7 @@ def parse_number(self) -> None | int | float:
 
 ## CLI Usage
 
-For this implementation, I've set it up so that running `jp` from the command line will allow the user to parse a JSON file from a provided file path, or manually type a JSON object in the command line to be parsed. Successful parsing returns `0`, unsuccessful parsing returns `1` along with an error message. 
+[For this implementation](https://github.com/lwcarani/json-parser/tree/main/python), I've set it up so that running `jp` from the command line will allow the user to parse a JSON file from a provided file path, or manually type a JSON object in the command line to be parsed. Successful parsing returns `0`, unsuccessful parsing returns `1` along with an error message. 
 
 ### Instructions
 For Windows, create a folder named `Aliases` in your C drive: `C:/Aliases`. Add this folder to PATH. Next, create a batch file that will execute when you call the specified alias. For example, on my machine, I have a batch file named `jp.bat` located at `C:/Aliases`, that contains the following script:
