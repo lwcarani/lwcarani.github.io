@@ -308,7 +308,7 @@ The `read_string` rule is a separate lexer rule that handles the contents of str
 I wrote a few tests for the program, which can be found in `test/parser_test.ml`:
 
 ```ocaml
-(* Tests for parser *)
+(* Tests for parser *) 
 
 open OUnit2
 open Json_parser.Main
