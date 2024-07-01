@@ -251,7 +251,7 @@ rule name =
 
 Here, `rule` and `parse` are keywords. The lexer generated attempts to match against regular expressions *in the order they are listed*. When a regular expression matches, the lexer produces the token specified by its `action`. 
 
-```ocaml
+```
 (* Rules *)
 rule read =
   parse
