@@ -75,7 +75,7 @@ let rec depth t =
 
 ## 5. No null value
 
-By design, OCaml does not include a `null` or `nil` value. Instead, OCaml has `Option`, which is like a box that either contains `Some` value, or `None`. Idiomatically, we use pattern matching to check and "unwrap" the contents of the "box". We can uses this to gracefully handle things like possibly empty lists, in a very readable format:
+By design, OCaml does not include a `null` or `nil` value. Instead, OCaml has `Option`, which is like a box that either contains `Some` value, or `None`. Idiomatically, we use pattern matching to check and "unwrap" the contents of the "box". We can uses this to gracefully handle things like possibly empty lists, in a very readable format: 
 
 ```ocaml
 (** [extract o] converts the int option to a string value
