@@ -119,7 +119,20 @@ squares = [n**2 for n in numbers if n % 2 == 0]
 print(squares)  # [4, 16]
 
 # set comprehension
-names = {"Alice", "Bob", "Charlie", "Dan", "Edgar", "Fred", "Gertrude", "Herbert", "Ida", "Joan", "Joan", "Joan"}
+names = {
+    "Alice", 
+    "Bob", 
+    "Charlie", 
+    "Dan", 
+    "Edgar", 
+    "Fred", 
+    "Gertrude", 
+    "Herbert", 
+    "Ida", 
+    "Joan", 
+    "Joan", 
+    "Joan"
+}
 names = {n for n in names if "a" in n}  # {'Charlie', 'Dan', 'Joan', 'Edgar', 'Ida'}
 
 # dict comprehension
@@ -181,5 +194,5 @@ Context managers, using the `with` statement, simplify resource management. In t
 ```python
 with open('example.txt', 'w') as file:
     file.write('Hello, Python!')
-# File is automatically closed after the block
+# File is automatically closed after the block 
 ```
