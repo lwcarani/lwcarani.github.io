@@ -11,7 +11,7 @@ In this blog post, I'm going to cover another [John Crickett](https://github.com
 The full code for this project can be found at my Github [here](https://github.com/lwcarani/dropbox-clone).
 
 ## About
-This project is a command-line interface (CLI) application (written in Java) that mimics some of the core functionalities of Dropbox, allowing users to synchronize files between their local machine and cloud storage (in this particular implementation, Amazon Web Services (AWS) Simple Storage Service (S3)). I've been meaning to brush up on Java, and learn how to use the Spring framework, so this seemed like the perfect project. I've also used Google Cloud and Firebase before, but not AWS, so I chose to AWS as the backend to learn more about the APIs and building on AWS services. For this project, I only needed AWS Cognito for user authentication, and AWS S3 for file storage and retrieval.
+This project is a command-line interface (CLI) application (written in Java) that mimics some of the core functionalities of Dropbox, allowing users to synchronize files between their local machine and cloud storage (in this particular implementation, Amazon Web Services (AWS) Simple Storage Service (S3)). I've been meaning to brush up on Java, and learn how to use the Spring framework, so this seemed like the perfect project. I've also used Google Cloud and Firebase before, but not AWS, so I chose AWS as the backend to learn more about the APIs and building on AWS services. For this project, I only needed AWS Cognito for user authentication, and AWS S3 for file storage and retrieval.
 
 ## Technology Stack
 
@@ -63,7 +63,7 @@ For a full list of dependencies, please refer to the `pom.xml` file.
 
 The project uses the Spring Boot Maven plugin for building. The main class is set to `io.github.lwcarani.DropboxCloneApplication`.
 
-To build a JAR file in Eclipse IDE using Maven, follow these steps:
+To build a JAR file in the Eclipse IDE using Maven, follow these steps:
 
 1. Ensure your project is set up as a Maven project in Eclipse.
 2. Open the project in Eclipse.
@@ -81,6 +81,8 @@ Once you've built a JAR file, you can run the application from the command line,
 ```
 java -jar target\dropbox-clone-0.0.2.jar
 ```
+
+On my Windows machine, I prefer to create a batch file and add it to PATH so that I can start the application from anywhere. I explain this in more detail below, in the [Instructions](#instructions) subsection. 
 
 ## Usage
 
@@ -284,7 +286,7 @@ Logout successful. Goodbye, lwcarani!
 >
 ```
 
-This will also prevent you from conducting any actions that you need to be logged on to perform:
+The application also prevents you from conducting certain actions, if you need to be logged on to perform those actions:
 
 ```cmd
 > rm C:/
