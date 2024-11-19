@@ -4,6 +4,8 @@ author: luke
 date: 2024-06-23 12:00:00 +0500
 categories: [Programming]
 tags: [programming, python]
+image:
+  path: /assets/img/wise_snake.png
 ---
 
 I love Python. And who doesn't? It's pervasive for a reason. Sure, it's a dynamically typed interpreted language that pushes type errors that other languages would catch at compile-time to run-time, but that also enables extremely rapid scripting and iterating when developing in Python. When I was first learning programming, I thought I had to pick - I'm either a statically typed guy or dynamically typed guy. "I like interpreted languages" or "I like compiled languages". I quickly learned that (1) these distinctions are not always as black and white as they seem, and (2) although it is extremely useful to have deep expertise in a language, it's important to recognize that programming languages are just tools, and we as software engineers and programmers need to make sure we're picking the best tool for the job. 

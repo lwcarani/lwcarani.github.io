@@ -6,7 +6,7 @@ categories: [Software Engineering, aiMessages]
 tags: [programming, large-language-models]
 mermaid: true
 image:
-  path: /assets/img/conversational memory.png
+  path: /assets/img/conversational_memory.png
 ---
 
 ## Overview
